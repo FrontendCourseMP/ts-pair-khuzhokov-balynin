@@ -1,15 +1,20 @@
 export function getInitials(fullName: string) {
   const [lastName, name, middleName] = fullName.trim().split(" ");
 
-  if (!lastName || !name || !middleName) {
+  if (!lastName || !name) {
     throw new TypeError("invalid `fullName`");
   }
 
-  const [nameFirstLetter, lastNameFirstLetter] = [name[0], lastName[0]];
+  const [nameFirstLetter, middleNameFirstLetter] = [
+    name[0],
+    middleName?.[0] || "",
+  ];
 
-  if (!nameFirstLetter || !lastNameFirstLetter) {
+  if (!nameFirstLetter) {
     throw new TypeError("invalid name or lastName");
   }
 
-  return `${middleName} ${nameFirstLetter.toUpperCase()}. ${lastNameFirstLetter.toUpperCase()}.`;
+  return `${nameFirstLetter.toUpperCase()}. ${
+    middleNameFirstLetter ? middleNameFirstLetter.toUpperCase() + ". " : ""
+  }${lastName}`;
 }
