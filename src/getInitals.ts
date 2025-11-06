@@ -11,5 +11,5 @@ export function getInitials(fullName: string) {
     throw new TypeError("invalid name or lastName");
   }
 
-  return `${middleName} ${nameFirstLetter.toUpperCase()} ${lastNameFirstLetter.toUpperCase()}`;
+  return `${middleName} ${nameFirstLetter.toUpperCase()}. ${lastNameFirstLetter.toUpperCase()}.`;
 }
