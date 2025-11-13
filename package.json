@@ -2,9 +2,19 @@
   "name": "ts-pair-khuzhokov-balynin",
   "private": true,
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "dev:serve": "tsc && serve .",
+    "dev:ts": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src",
+    "format": "prettier --write ./src/**/*.ts"
+  },
   "devDependencies": {
+    "@gravity-ui/eslint-config": "^4.2.0",
+    "@gravity-ui/prettier-config": "^1.1.0",
     "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
     "serve": "^14.2.5",
     "typescript": "^5.9.3"
   }

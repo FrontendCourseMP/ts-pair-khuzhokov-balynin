@@ -1,25 +1,54 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Task 1</title>
-    <style>
-      .red {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <form id="task-1">
-      <input
-        type="text"
-        id="fullName"
-        placeholder="Fullname..."
-        name="fullName"
-      />
-      <output for="fullName" name="output" id="output"></output>
-    </form>
-    <script src="dist/main.js" type="module" defer></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Task 1</title>
+        <style>
+            .form {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Task 2. Calculator</h1>
+
+            <form id="task-2" class="form">
+                <div>
+                    <input
+                        type="text"
+                        id="mathExpression"
+                        placeholder="Math expression..."
+                        name="mathExpresson"
+                    />
+                    <button type="submit">Calculate</button>
+                </div>
+
+                <output for="mathExpresson" name="output" id="output"></output>
+            </form>
+
+            <script src="dist/tasks/task-2/main.js" type="module" defer></script>
+        </section>
+
+        <section>
+            <h1>Task 1</h1>
+            <form id="task-1" class="form">
+                <div>
+                    <input type="text" id="fullName" placeholder="Fullname..." name="fullName" />
+                    <button type="submit">Submit</button>
+                </div>
+
+                <output for="fullName" name="output" id="output"></output>
+            </form>
+
+            <script src="dist/tasks/task-1/main.js" type="module" defer></script>
+        </section>
+    </body>
 </html>
