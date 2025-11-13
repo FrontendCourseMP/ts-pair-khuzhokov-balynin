@@ -5,16 +5,16 @@ export function getInitials(fullName: string) {
     throw new TypeError("invalid `fullName`");
   }
 
-  const [nameFirstLetter, middleNameFirstLetter] = [
-    name[0],
-    middleName?.[0] || "",
-  ];
+  const nameFirstLetter = name[0];
+  const middleNameFirstLetter = middleName?.[0] || "";
 
   if (!nameFirstLetter) {
     throw new TypeError("invalid name or lastName");
   }
 
-  return `${nameFirstLetter.toUpperCase()}. ${
-    middleNameFirstLetter ? middleNameFirstLetter.toUpperCase() + ". " : ""
-  }${lastName}`;
+  const outputMiddlePart = middleNameFirstLetter
+    ? middleNameFirstLetter.toUpperCase() + ". "
+    : "";
+
+  return `${nameFirstLetter.toUpperCase()}. ${outputMiddlePart}${lastName}`;
 }
