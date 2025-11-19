@@ -23,15 +23,20 @@ export function evaluate(tokens: Token[]): number {
 
     return res
         .filter((token) => token.type === 'number')
-        .reduce((prev, curr) => prev + (curr.value as number), 0);
+        .reduce((prev, curr) => prev + curr.value, 0);
 }
 
 type TokenType = 'number' | 'op';
 
-type Token = {
-    type: TokenType;
-    value: number | string;
-};
+type Token =
+    | {
+          type: 'number';
+          value: number;
+      }
+    | {
+          type: 'op';
+          value: string;
+      };
 
 export function parseTokens(input: string): Token[] {
     const output: Token[] = [];
