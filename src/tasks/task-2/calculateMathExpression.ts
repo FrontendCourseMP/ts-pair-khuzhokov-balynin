@@ -1,17 +1,29 @@
 export function calculateMathExpression(expression: string): number {
     const tokens = parseTokens(expression);
-    const tree = parseAst(tokens);
-    return evaluate(tree);
+    return evaluate(tokens);
 }
 
-export function evaluate(_tree: Tree): number {
-    return 0;
-}
+export function evaluate(tokens: Token[]): number {
+    let res = [...tokens];
 
-type Tree = {};
+    for (let index; (index = res.findIndex((el) => el.type === 'op' && el.value === '*')); ) {
+        if (index === -1) break;
 
-export function parseAst(_tokens: Token[]): Tree {
-    return {};
+        const lhs = res[index - 1]?.value;
+        if (!lhs || typeof lhs !== 'number') throw new TypeError(`expected number before *`);
+
+        const rhs = res[index + 1]?.value;
+        if (!rhs || typeof rhs !== 'number') throw new TypeError(`expected number after *`);
+
+        const left = res.slice(0, index - 1);
+        const right = res.slice(index + 2);
+
+        res = [...left, {type: 'number', value: lhs * rhs}, ...right];
+    }
+
+    return res
+        .filter((token) => token.type === 'number')
+        .reduce((prev, curr) => prev + (curr.value as number), 0);
 }
 
 type TokenType = 'number' | 'op';
